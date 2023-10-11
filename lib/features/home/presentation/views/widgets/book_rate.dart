@@ -8,6 +8,7 @@ class BookingRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: const [
         FaIcon( FontAwesomeIcons.solidStar,color: Colors.yellow,),
         SizedBox(width: 7,),

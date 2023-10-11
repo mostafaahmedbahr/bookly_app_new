@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'book_rate.dart';
 import 'custom_book_details_app_bar.dart';
 import 'custom_list_view_item.dart';
 
@@ -30,6 +31,8 @@ class BookViewDetailsBody extends StatelessWidget {
               fontStyle: FontStyle.italic,
               color: Colors.grey,
             ),),
+          const SizedBox(height: 18,),
+          const BookingRating(),
         ],
       ),
     );
