@@ -13,7 +13,7 @@ class FeaturesBooksListView extends StatelessWidget {
             itemCount: 10,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context,index){
-              return const CustomListViewItem();
+              return const CustomBookImage();
             },
         ),
       ),
