@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:bookly_app/features/home/domain/entites/book_entity.dart';
+
 BookModel bookModelFromJson(String str) => BookModel.fromJson(json.decode(str));
 
 String bookModelToJson(BookModel data) => json.encode(data.toJson());
@@ -23,6 +25,7 @@ class BookModel {
     kind: json["kind"],
     totalItems: json["totalItems"],
     items: List<Item>.from(json["items"].map((x) => Item.fromJson(x))),
+
   );
 
   Map<String, dynamic> toJson() => {
@@ -32,7 +35,7 @@ class BookModel {
   };
 }
 
-class Item {
+class Item extends BookEntity{
   Kind kind;
   String id;
   String etag;
@@ -51,7 +54,14 @@ class Item {
     required this.saleInfo,
     required this.accessInfo,
     required this.searchInfo,
-  });
+  }) : super(
+    title: volumeInfo.title ,
+    rate: volumeInfo.ratingsCount,
+    price: 0.0,
+    autherName: volumeInfo.authors.first,
+    image: volumeInfo.imageLinks?.thumbnail ?? "",
+    bookId: id,
+  );
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
     kind: kindValues.map[json["kind"]]!,
