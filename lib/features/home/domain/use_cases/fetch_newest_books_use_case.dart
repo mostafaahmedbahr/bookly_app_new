@@ -20,10 +20,10 @@ import '../entites/book_entity.dart';
 //   }
 // }
 
-class FetchNewestUseCase extends UseCaseWithNoParam<List<BookEntity>> {
+class FetchNewestBooksUseCase extends UseCaseWithNoParam<List<BookEntity>> {
   final HomeRepo homeRepo;
 
-  FetchNewestUseCase(this.homeRepo);
+  FetchNewestBooksUseCase(this.homeRepo);
 
   @override
   Future<Either<Errors, List<BookEntity>>> call()async {
