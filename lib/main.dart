@@ -3,9 +3,11 @@ import 'package:bookly_app/core/utils/app_routers.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'constants.dart';
+import 'features/home/domain/entites/book_entity.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
+  Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox('books');
   runApp(const MyApp());
 }

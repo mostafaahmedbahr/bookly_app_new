@@ -4,6 +4,7 @@ import 'package:bookly_app/features/home/data/models/book_model.dart';
 import 'package:bookly_app/features/home/domain/entites/book_entity.dart';
 import 'package:bookly_app/features/home/domain/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class HomeRemoteDataSource extends HomeRepo {
   final ApiServices apiServices;
@@ -19,7 +20,7 @@ class HomeRemoteDataSource extends HomeRepo {
         .getData(
       url: "volumes?q=$booksType",
     )
-        .then((value) {
+        .then((value) async {
           bookModel = BookModel.fromJson(value.data);
           print("mostafa 1");
           List<BookEntity> booksList = [];
@@ -31,6 +32,9 @@ class HomeRemoteDataSource extends HomeRepo {
           print("mostafa 2");
           print(booksList);
           print("mostafa 3");
+          var box = Hive.box('books');
+          box.addAll(booksList);
+          print("mostafa 4");
     }).catchError((error) {
       print(error.toString());
     });
@@ -58,6 +62,9 @@ class HomeRemoteDataSource extends HomeRepo {
       print("mostafa 2");
       print(booksList);
       print("mostafa 3");
+      var box = Hive.box('books');
+      box.addAll(booksList);
+      print("mostafa 4");
     }).catchError((error) {
       print(error.toString());
     });
