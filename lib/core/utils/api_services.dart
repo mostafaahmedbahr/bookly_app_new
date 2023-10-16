@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 
-class ApiServices
+  class ApiServices
 {
   static Dio? dio;
   static init()
@@ -14,7 +14,7 @@ class ApiServices
     );
   }
 
-  static Future<Response> getData({
+    Future<Response> getData({
     required String url,
     Map<String ,dynamic>? query,
     String? token,
