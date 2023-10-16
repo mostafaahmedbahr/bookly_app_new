@@ -1,13 +1,20 @@
-@override
-const typeId = 0;
 
+import 'package:hive_flutter/hive_flutter.dart';
 
-class BookEntity {
+part 'book_entity.g.dart';
+@HiveType(typeId: 0)
+class BookEntity extends HiveObject {
+  @HiveField(0)
   final String? bookId;
+  @HiveField(1)
   final String? image;
+  @HiveField(2)
   final String? title;
+  @HiveField(3)
   final String? autherName;
+  @HiveField(4)
   final num? price;
+  @HiveField(5)
   final num? rate;
 
   BookEntity(
