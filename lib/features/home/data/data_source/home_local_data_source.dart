@@ -22,7 +22,7 @@ class HomeLocalDataSourceImplement extends HomeLocalDataSource
 
   @override
   List<BookEntity> fetchNewestBooks() {
-    var box =   Hive.box<BookEntity>('books');
+    var box =   Hive.box<BookEntity>('newestBooks');
     return box.values.toList();
   }
 

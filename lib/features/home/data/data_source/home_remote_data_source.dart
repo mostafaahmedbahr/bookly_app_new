@@ -62,7 +62,7 @@ class HomeRemoteDataSource extends HomeRepo {
       print("mostafa 2");
       print(booksList);
       print("mostafa 3");
-      var box = Hive.box('books');
+      var box = Hive.box('newestBooks');
       box.addAll(booksList);
       print("mostafa 4");
     }).catchError((error) {

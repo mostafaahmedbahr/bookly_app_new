@@ -8,7 +8,8 @@ import 'features/home/domain/entites/book_entity.dart';
 Future<void> main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox('books');
+  await Hive.openBox<BookEntity>('books');
+  await Hive.openBox<BookEntity>('newestBooks');
   runApp(const MyApp());
 }
 
