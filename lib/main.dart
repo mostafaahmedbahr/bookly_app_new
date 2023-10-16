@@ -1,9 +1,12 @@
 import 'package:bookly_app/core/utils/app_routers.dart';
  import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'constants.dart';
 
-void main() {
+Future<void> main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('books');
   runApp(const MyApp());
 }
 
