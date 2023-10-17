@@ -11,14 +11,14 @@ BookModel bookModelFromJson(String str) => BookModel.fromJson(json.decode(str));
 String bookModelToJson(BookModel data) => json.encode(data.toJson());
 
 class BookModel {
-  String kind;
-  int totalItems;
-  List<Item> items;
+  String? kind;
+  int? totalItems;
+  List<Item>? items;
 
   BookModel({
-    required this.kind,
-    required this.totalItems,
-    required this.items,
+      this.kind,
+      this.totalItems,
+      this.items,
   });
 
   factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
@@ -31,7 +31,7 @@ class BookModel {
   Map<String, dynamic> toJson() => {
     "kind": kind,
     "totalItems": totalItems,
-    "items": List<dynamic>.from(items.map((x) => x.toJson())),
+    "items": List<dynamic>.from(items!.map((x) => x.toJson())),
   };
 }
 
