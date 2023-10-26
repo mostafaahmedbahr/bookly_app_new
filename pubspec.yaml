@@ -44,6 +44,7 @@ dependencies:
   bloc: ^8.1.2
   path:
   get_it: ^7.6.4
+  cached_network_image: ^3.3.0
 
 
 

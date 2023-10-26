@@ -1,4 +1,5 @@
- import 'package:flutter/material.dart';
+ import 'package:bookly_app/features/home/domain/entites/book_entity.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/use_cases/fetch_all_books_use_case.dart';
@@ -21,7 +22,7 @@ class FetchAllBooksCubit extends Cubit<FetchAllBooksStates> {
     result.fold((l){
       emit(FetchAllBooksErrorState(l.toString()));
     }, (r){
-      emit(FetchAllBooksSuccessState());
+      emit(FetchAllBooksSuccessState(r.toList()));
     });
   }
 }

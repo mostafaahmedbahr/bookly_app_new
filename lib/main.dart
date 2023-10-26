@@ -5,6 +5,7 @@ import 'package:bookly_app/features/home/data/data_source/home_remote_data_sourc
 import 'package:bookly_app/features/home/data/repos/home_repo_implementation.dart';
 import 'package:bookly_app/features/home/domain/use_cases/fetch_newest_books_use_case.dart';
  import 'package:bookly_app/features/home/presentation/manager/fetch_all_books_cubit/fetch_all_books_cubit.dart';
+import 'package:dio/dio.dart';
   import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -24,9 +25,10 @@ Future<void> main() async {
   await Hive.openBox<BookEntity>('books');
   await Hive.openBox<BookEntity>('newestBooks');
   getIt.registerSingleton<HomeRepoImplementation>( HomeRepoImplementation(
-    homeRemoteDataSource: HomeRemoteDataSource(
-      ApiServices(),
-      BookModel(),
+    homeRemoteDataSource: HomeRemoteDataSourceImplementation(
+      ApiServices(
+        Dio(),
+      ),
     ) ,
     homeLocalDataSource:  HomeLocalDataSourceImplement(),
   ),);
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context)=> FetchAllBooksCubit(FetchAllBooksUseCase(
             getIt.get<HomeRepoImplementation>(),
         ),
-        ),
+        )..getAllBooksInCubit(),
         ),
         BlocProvider(create: (context)=> FetchNewestBooksCubit(FetchNewestBooksUseCase(
           getIt.get<HomeRepoImplementation>(),
